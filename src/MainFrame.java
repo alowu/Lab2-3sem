@@ -33,11 +33,30 @@ public class MainFrame extends JFrame {
     private Toolkit kit;
 
     public Double calculate1(Double x, Double y, Double z) {
+        if (x == 0) {
+            JOptionPane.showMessageDialog(MainFrame.this,
+                    "x не может равняться нулю", "" +
+                            "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
+
+        if (y == 0) {
+            JOptionPane.showMessageDialog(MainFrame.this,
+                    "y не может равняться нулю", "" +
+                            "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
         return Math.pow(Math.log(Math.pow(1 + x, 2)) + Math.cos(Math.E * z * z * z), Math.sin(y)) +
                 Math.pow(Math.pow(Math.E, x * x) + Math.cos(Math.pow(Math.E, z)) + Math.sqrt(1 / y), (1 / x));
     }
 
     public Double calculate2(Double x, Double y, Double z) {
+        if (x == 0) {
+            JOptionPane.showMessageDialog(MainFrame.this,
+                    "x не может равняться нулю", "" +
+                            "Ошибка ввода", JOptionPane.WARNING_MESSAGE);
+            return 0.0;
+        }
         return Math.pow(Math.cos(Math.PI * Math.pow(x, 3)) + Math.log(Math.pow(1 + y, 2)), 1 / 4.) *
                 (Math.pow(Math.E, z * z) + Math.sqrt(1 / x) + Math.cos(Math.pow(Math.E, y)));
     }
@@ -49,9 +68,9 @@ public class MainFrame extends JFrame {
                 MainFrame.this.formulaId = formulaId;
                 Image im;
                 if (formulaId == 1)
-                    im = kit.getImage("H:\\Lab2-3sem\\src\\f1.png");
+                    im = kit.getImage("H:\\Lab2-3sem\\src\\func1.png");
                 else
-                    im = kit.getImage("H:\\Lab2-3sem\\src\\f2.png");
+                    im = kit.getImage("H:\\Lab2-3sem\\src\\func2.png");
                 ImageIcon i = new ImageIcon();
                 i.setImage(im);
                 labelImage.setIcon(i);
@@ -226,7 +245,7 @@ public class MainFrame extends JFrame {
         contentBox.add(hboxMem);
         contentBox.add(Box.createVerticalGlue());
         getContentPane().add(contentBox, BorderLayout.CENTER);
-        Image im = kit.getImage("H:\\Lab2-3sem\\src\\f1.png");
+        Image im = kit.getImage("H:\\Lab2-3sem\\src\\func1.png");
         ImageIcon icon = new ImageIcon();
         icon.setImage(im);
         labelImage.setIcon(icon);
