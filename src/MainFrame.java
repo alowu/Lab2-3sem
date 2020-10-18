@@ -3,6 +3,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.lang.Math;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -15,7 +17,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class MainFrame extends JFrame {
-    private static final int WIDTH = 740;
+    private static final int WIDTH = 720;
     private static final int HEIGHT = 480;
     private JTextField textFieldX;
     private JTextField textFieldY;
@@ -104,6 +106,7 @@ public class MainFrame extends JFrame {
         addRadioButtonF("Formula 2", 2);
         radioButtonsF.setSelected(radioButtonsF.getElements().nextElement().getModel(), true);
         hboxFormulaType.add(Box.createHorizontalGlue());
+
         Image iconX = kit.getImage("H:\\Lab2-3sem\\src\\iconOfApp.png");
         setIconImage(iconX);
 
@@ -115,23 +118,23 @@ public class MainFrame extends JFrame {
         hboxMemRB.add(Box.createHorizontalGlue());
 
         JLabel labelForX = new JLabel("X:");
-        textFieldX = new JTextField("0", 10);
+        textFieldX = new JTextField("", 10);
         textFieldX.setMaximumSize(textFieldX.getPreferredSize());
         JLabel labelForY = new JLabel("Y:");
-        textFieldY = new JTextField("0", 10);
+        textFieldY = new JTextField("", 10);
         textFieldY.setMaximumSize(textFieldY.getPreferredSize());
         JLabel labelForZ = new JLabel("Z:");
-        textFieldZ = new JTextField("0", 10);
+        textFieldZ = new JTextField("", 10);
         textFieldZ.setMaximumSize(textFieldZ.getPreferredSize());
 
         JLabel labelForM1 = new JLabel("M1:");
-        textFieldM[0] = new JTextField("0", 12);
+        textFieldM[0] = new JTextField("empty", 12);
         textFieldM[0].setMaximumSize(textFieldM[0].getPreferredSize());
-        JLabel labelForM2 = new JLabel("M1:");
-        textFieldM[1] = new JTextField("0", 12);
+        JLabel labelForM2 = new JLabel("M2:");
+        textFieldM[1] = new JTextField("empty", 12);
         textFieldM[1].setMaximumSize(textFieldM[1].getPreferredSize());
-        JLabel labelForM3 = new JLabel("M1:");
-        textFieldM[2] = new JTextField("0", 12);
+        JLabel labelForM3 = new JLabel("M3:");
+        textFieldM[2] = new JTextField("empty", 12);
         textFieldM[2].setMaximumSize(textFieldM[2].getPreferredSize());
 
         Box hboxMem = Box.createHorizontalBox();
@@ -169,7 +172,15 @@ public class MainFrame extends JFrame {
         hboxImage.add(labelImage);
 
         JLabel labelForResult = new JLabel("Result:");
-        textFieldResult = new JTextField("0", 12);
+        textFieldResult = new JTextField("", 12);
+        textFieldResult.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();  // ignore event
+                }
+            }
+        });
         textFieldResult.setMaximumSize(textFieldResult.getPreferredSize());
         Box hboxResult = Box.createHorizontalBox();
         hboxResult.add(Box.createHorizontalGlue());
@@ -201,10 +212,10 @@ public class MainFrame extends JFrame {
         JButton buttonReset = new JButton("Clear");
         buttonReset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                textFieldX.setText("0");
-                textFieldY.setText("0");
-                textFieldZ.setText("0");
-                textFieldResult.setText("0");
+                textFieldX.setText("");
+                textFieldY.setText("");
+                textFieldZ.setText("");
+                textFieldResult.setText("");
             }
         });
 
@@ -212,7 +223,7 @@ public class MainFrame extends JFrame {
         MC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
                 mem[memid] = (double) 0;
-                textFieldM[memid].setText(mem[memid].toString());
+                textFieldM[memid].setText("empty");
             }
         });
         JButton MP = new JButton("M+");
