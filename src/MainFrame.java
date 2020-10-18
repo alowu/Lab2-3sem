@@ -104,6 +104,8 @@ public class MainFrame extends JFrame {
         addRadioButtonF("Formula 2", 2);
         radioButtonsF.setSelected(radioButtonsF.getElements().nextElement().getModel(), true);
         hboxFormulaType.add(Box.createHorizontalGlue());
+        Image iconX = kit.getImage("H:\\Lab2-3sem\\src\\iconOfApp.png");
+        setIconImage(iconX);
 
         hboxMemRB.add(Box.createHorizontalGlue());
         addRadioButtonM("M1", 1);
