@@ -205,7 +205,7 @@ public class MainFrame extends JFrame {
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(MainFrame.this,
                             "NumberFormatException", "Error 450",
-                            JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
