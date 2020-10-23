@@ -162,7 +162,7 @@ public class MainFrame extends JFrame {
         hboxImage.add(labelImage);
 
         JLabel labelForResult = new JLabel("Result:");
-        textFieldResult = new JTextField("", 12);
+        textFieldResult = new JTextField("0", 12);
         textFieldResult.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
