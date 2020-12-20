@@ -127,6 +127,10 @@ public class MainFrame extends JFrame {
         textFieldM[2] = new JTextField("empty", 12);
         textFieldM[2].setMaximumSize(textFieldM[2].getPreferredSize());
 
+        textFieldM[0].setEditable(false);
+        textFieldM[1].setEditable(false);
+        textFieldM[2].setEditable(false);
+
         Box hboxMem = Box.createHorizontalBox();
         hboxMem.add(Box.createHorizontalGlue());
         hboxMem.add(labelForM1);
@@ -163,14 +167,8 @@ public class MainFrame extends JFrame {
 
         JLabel labelForResult = new JLabel("Result:");
         textFieldResult = new JTextField("0", 12);
-        textFieldResult.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (c != KeyEvent.VK_BACK_SPACE) {
-                    e.consume();  // ignore event
-                }
-            }
-        });
+        textFieldResult.setEditable(false);
+
         textFieldResult.setMaximumSize(textFieldResult.getPreferredSize());
         Box hboxResult = Box.createHorizontalBox();
         hboxResult.add(Box.createHorizontalGlue());
@@ -205,7 +203,7 @@ public class MainFrame extends JFrame {
                 textFieldX.setText("");
                 textFieldY.setText("");
                 textFieldZ.setText("");
-                textFieldResult.setText("");
+                textFieldResult.setText("0");
             }
         });
 
